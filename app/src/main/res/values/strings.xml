@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">RC4</string>
+    <string name="key">Key</string>
+    <string name="text">Text</string>
+    <string name="required_field">Required field</string>
+    <string name="ok">OK</string>
+    <string name="copy">Copy</string>
+    <string name="result">Result</string>
+    <string name="download">Download</string>
+    <string name="about">About</string>
+    <string name="show_code">Show code</string>
+    <string name="generate">Generate</string>
+</resources>
