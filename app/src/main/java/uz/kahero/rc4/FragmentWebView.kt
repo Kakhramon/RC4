@@ -24,7 +24,7 @@ class FragmentWebView : Fragment(R.layout.fragment_web_view) {
             settings.setSupportZoom(true)
             settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
             settings.javaScriptEnabled = true
-            loadUrl("https://docs.google.com/gview?embedded=true&url=http://library.ziyonet.uz/ru/book/download/75166")
+            loadUrl("https://docs.google.com/gview?embedded=true&url=https://sandilands.info/sgordon/teaching/css322y07s2/protected/CSS322Y07S2H03-RC4-Example.pdf")
         }
     }
 
@@ -37,7 +37,8 @@ class FragmentWebView : Fragment(R.layout.fragment_web_view) {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == R.id.download) {
             val intent = Intent(Intent.ACTION_VIEW).apply {
-                data = Uri.parse("http://library.ziyonet.uz/ru/book/download/75166")
+                data =
+                    Uri.parse("https://sandilands.info/sgordon/teaching/css322y07s2/protected/CSS322Y07S2H03-RC4-Example.pdf")
             }
             startActivity(intent)
             return true

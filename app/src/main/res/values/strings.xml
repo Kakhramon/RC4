@@ -7,7 +7,7 @@
     <string name="copy">Copy</string>
     <string name="result">Result</string>
     <string name="download">Download</string>
-    <string name="about">About</string>
     <string name="show_code">Show code</string>
     <string name="generate">Generate</string>
+    <string name="tutorial">Tutorial</string>
 </resources>

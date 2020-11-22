@@ -1,9 +1,12 @@
 package uz.kahero.rc4
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.webkit.WebSettings
 import android.webkit.WebView
@@ -20,12 +23,13 @@ class ShowCodeFragment : Fragment(R.layout.fragment_web_view) {
     @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
         view.findViewById<WebView>(R.id.web).apply {
             webViewClient = WebViewClient()
             settings.setSupportZoom(true)
             settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
             settings.javaScriptEnabled = true
-            loadUrl("https://docs.google.com/gview?embedded=true&url=http://library.ziyonet.uz/ru/book/download/75166")
+            loadUrl("https://github.com/Kakhramon/RC4/blob/main/app/src/main/java/uz/kahero/rc4/RC4.kt")
         }
     }
 
@@ -38,6 +42,17 @@ class ShowCodeFragment : Fragment(R.layout.fragment_web_view) {
         @JvmStatic
         fun newInstance() =
             ShowCodeFragment()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.download) {
+            val intent = Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse("https://github.com/Kakhramon/RC4")
+            }
+            startActivity(intent)
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
