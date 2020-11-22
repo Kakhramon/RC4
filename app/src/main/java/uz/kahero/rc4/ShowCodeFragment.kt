@@ -11,7 +11,9 @@ import android.view.View
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.fragment_web_view.*
 
 /**
  * A simple [Fragment] subclass.
@@ -24,8 +26,13 @@ class ShowCodeFragment : Fragment(R.layout.fragment_web_view) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setHasOptionsMenu(true)
-        view.findViewById<WebView>(R.id.web).apply {
-            webViewClient = WebViewClient()
+        web.apply {
+            webViewClient = object : WebViewClient() {
+                override fun onPageFinished(view: WebView?, url: String?) {
+                    super.onPageFinished(view, url)
+                    progressBar.isGone = true
+                }
+            }
             settings.setSupportZoom(true)
             settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
             settings.javaScriptEnabled = true

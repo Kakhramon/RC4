@@ -1,4 +1,4 @@
-package uz.kahero.prng
+package uz.kahero.rc4
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -11,16 +11,22 @@ import android.view.View
 import android.webkit.WebSettings
 import android.webkit.WebView
 import android.webkit.WebViewClient
+import androidx.core.view.isGone
 import androidx.fragment.app.Fragment
-import uz.kahero.rc4.R
+import kotlinx.android.synthetic.main.fragment_web_view.*
 
 class FragmentWebView : Fragment(R.layout.fragment_web_view) {
     @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<WebView>(R.id.web).apply {
-            webViewClient = WebViewClient()
+        web.apply {
+            webViewClient = object : WebViewClient() {
+                override fun onPageFinished(view: WebView?, url: String?) {
+                    super.onPageFinished(view, url)
+                    progressBar.isGone = true
+                }
+            }
             settings.setSupportZoom(true)
             settings.cacheMode = WebSettings.LOAD_CACHE_ELSE_NETWORK
             settings.javaScriptEnabled = true

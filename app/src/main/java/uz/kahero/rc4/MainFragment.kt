@@ -13,7 +13,6 @@ import android.view.View
 import android.widget.EditText
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_main.*
-import uz.kahero.prng.FragmentWebView
 
 class MainFragment : Fragment(R.layout.fragment_main) {
     val rc4 = RC4()
